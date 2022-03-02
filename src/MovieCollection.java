@@ -375,7 +375,7 @@ public class MovieCollection
     // search through ALL movies in collection
     for (int i = 0; i < movies.size(); i++)
     {
-      String keywords = movies.get(i).getCast();
+      String keywords = movies.get(i).getGenres();
       keywords = keywords.toLowerCase();
 
       if (keywords.indexOf(searchTerm) != -1)
@@ -384,7 +384,6 @@ public class MovieCollection
         results.add(movies.get(i));
       }
     }
-
 
 
     // sort the results by title
