@@ -418,27 +418,29 @@ public class MovieCollection
   private void listHighestRated()
   {
     Movie[] top50 = new Movie[50];
-    for (Movie movie : movies) {
-      if(top50[49] == null || movie.getUserRating() >= top50[49].getUserRating()){
+    for (Movie movie : movies){
+      if(top50[49] == null || movie.getUserRating() > top50[49].getUserRating()){
         for (int i = 0; i < 50; i++) {
-          if (top50[i] == null || movie.getUserRating() >= top50[i].getUserRating()){
-            for (int j = i; j < 49; j++) {
-              top50[j+1] = top50[j];
+          if (top50[i] == null || movie.getUserRating() > top50[i].getUserRating()){
+            for (int j = 49; j > i; j--) {
+              top50[j] = top50[j-1];
             }
             top50[i] = movie;
             break;
           }
+
         }
       }
     }
     for (int i = 0; i < top50.length; i++)
     {
       String title = top50[i].getTitle();
+      double rating = top50[i].getUserRating();
 
       // this will print index 0 as choice 1 in the results list; better for user!
       int choiceNum = i + 1;
 
-      System.out.println("" + choiceNum + ". " + title);
+      System.out.println("" + choiceNum + ". " + title + " " + rating);
     }
 
     System.out.println("Which movie would you like to learn more about?");
